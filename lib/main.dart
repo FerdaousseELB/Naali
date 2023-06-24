@@ -4,6 +4,7 @@ import 'package:naali/ui.pages/Acceuil.page.dart';
 import 'package:naali/ui.pages/contact.page.dart';
 import 'package:naali/ui.pages/gummies.page.dart';
 import 'package:naali/ui.pages/infusions.page.dart';
+import 'package:naali/ui.pages/missions.page.dart';
 import 'package:naali/ui.pages/safran.page.dart';
 
 void main() => runApp(
@@ -29,6 +30,8 @@ class MyApp extends StatelessWidget {
         "/Infusion": (context) => const Infusion(),
         "/Safran": (context) => const Safran(),
         "/Contact": (context) => const Contact(),
+        "/Missions": (context) => const Missions(),
+
       },
       theme: ThemeData(
         primarySwatch: Colors.purple,

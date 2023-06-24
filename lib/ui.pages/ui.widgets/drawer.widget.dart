@@ -129,6 +129,28 @@ class MyDrawer extends StatelessWidget {
           ),
           ListTile(
             title: const Text(
+              'Nos missions',
+              style: TextStyle(fontSize: 22),
+            ),
+            leading: const Icon(
+              Icons.emoji_objects,
+              color: Colors.purple,
+            ),
+            trailing: const Icon(
+              Icons.arrow_right,
+              color: Colors.purple,
+            ),
+            onTap: () {
+              Navigator.of(context).pop();
+              Navigator.pushNamed(context, '/Missions');
+            },
+          ),
+          const Divider(
+            height: 4,
+            color: Colors.purple,
+          ),
+          ListTile(
+            title: const Text(
               'Contact',
               style: TextStyle(fontSize: 22),
             ),

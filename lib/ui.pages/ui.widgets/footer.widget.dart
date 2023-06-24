@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class Footer extends StatefulWidget {
   final int rating;
-  Footer(this.rating, {super.key, required MaterialColor backgroundColor});
+  const Footer({Key? key, required this.rating}) : super(key: key);
 
   @override
   _FooterState createState() => _FooterState();
@@ -42,59 +42,59 @@ class _FooterState extends State<Footer> {
 
   @override
   Widget build(BuildContext context) {
-   // Color.fromARGB(143, 143, 143, 143); // Footer background color
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        SizedBox(height: 8.0), // Espacement vertical
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: List.generate(
-            widget.rating,
-                (index) => Icon(
-              Icons.star,
-              color: Colors.yellow,
-              size: 24.0,
+    Color footerBackgroundColor = Colors.purple; // Remplacez par la couleur souhaitée
+    return Container(
+      color: footerBackgroundColor, // Ajout de la couleur d'arrière-plan
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          SizedBox(height: 8.0), // Espacement vertical
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: List.generate(
+              widget.rating,
+                  (index) => Icon(
+                Icons.star,
+                color: Colors.yellow,
+                size: 24.0,
+              ),
             ),
           ),
-        ),
-       // SizedBox(height: 8.0), // Espacement vertical
-        Padding(
-          padding: EdgeInsets.all(10.0),
-          child: Column(
+          Padding(
+            padding: EdgeInsets.all(10.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  titres[currentIndex],
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 16.0,
+                  ),
+                ),
+                Image.asset(
+                  images[currentImage],
+                  height: 50.0,
+                  width: 50.0,
+                ),
+              ],
+            ),
+          ),
+          Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
-                titres[currentIndex],
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 16.0,
-                ),
+              IconButton(
+                icon: Icon(Icons.arrow_back),
+                onPressed: goToPrevious,
               ),
-             // SizedBox(height: 8.0),
-              Image.asset(
-                images[currentImage],
-                height: 50.0,
-                width: 50.0,
+              IconButton(
+                icon: Icon(Icons.arrow_forward),
+                onPressed: goToNext,
               ),
             ],
           ),
-        ),
-       // SizedBox(height: 8.0), // Espacement vertical
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            IconButton(
-              icon: Icon(Icons.arrow_back),
-              onPressed: goToPrevious,
-            ),
-            IconButton(
-              icon: Icon(Icons.arrow_forward),
-              onPressed: goToNext,
-            ),
-          ],
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
