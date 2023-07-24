@@ -5,7 +5,7 @@ class MonBoutonAcheter extends StatelessWidget {
   final String url;
   final String buttonText;
 
-  MonBoutonAcheter({super.key, required this.url, required this.buttonText, required Color textColor});
+  const MonBoutonAcheter({super.key, required this.url, required this.buttonText, required Color textColor});
 
   void _redirectionVersSiteWeb() async {
     if (await canLaunch(url)) {
@@ -31,9 +31,9 @@ class MonEcran extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Mon Application'),
+        title: const Text('Mon Application'),
       ),
-      body: Center(
+      body: const Center(
         child: MonBoutonAcheter(
           url: 'https://example.com',
           buttonText: 'Acheter maintenant', textColor: Colors.white,

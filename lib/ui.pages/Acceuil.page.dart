@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:naali/ui.pages/ui.widgets/drawer.widget.dart';
 import 'package:naali/ui.pages/ui.widgets/footer.widget.dart';
+import 'package:naali/ui.pages/ui.widgets/headerPromo.widget.dart';
 import 'package:naali/ui.pages/ui.widgets/pointsFort.widget.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 
 class Acceuil extends StatefulWidget {
   const Acceuil({Key? key});
@@ -27,6 +29,11 @@ class _AcceuilState extends State<Acceuil> {
     'images/infusion.jpg',
     'images/safran.jpg',
   ]; // Liste des chemins d'accès aux images
+  List<String> promo = [
+    'promotion 01',
+    'Livraison gratuite',
+    'promotion 3',
+  ];
 
   @override
   void initState() {
@@ -62,6 +69,36 @@ class _AcceuilState extends State<Acceuil> {
       body: SingleChildScrollView(
         child: Column(
           children: [
+            CarouselSlider(
+              items: promo.map((text) {
+                return Container(
+                  color: Colors.black,
+                  //width: 900,
+                  margin: const EdgeInsets.all(1.0),
+                  child: Center(
+                    child: Text(
+                      text,
+                      style: const TextStyle(
+                        fontSize: 20.0,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white, // Texte en blanc
+                      ),
+                    ),
+                  ),
+                );
+              }).toList(),
+              options: CarouselOptions(
+                autoPlay: true,
+                autoPlayInterval: const Duration(seconds: 3),
+                aspectRatio: 10.0,
+                enlargeCenterPage: true,
+                scrollDirection: Axis.horizontal,
+                reverse: true,
+                viewportFraction:
+                2.5, // Ajuster la valeur pour enlever l'espace blanc
+              ),
+            ),
+            //HeaderPromo(),
             const SizedBox(height: 30),
             const Text(
               'Naali vous propose des compléments alimentaires riches en safran',
